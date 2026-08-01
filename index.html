@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PharmaPilote — Connexion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <main class="login-wrap">
+      <form class="login-panel" id="loginForm" autocomplete="on">
+        <header class="panel-header">
+          <div class="brand-mark" aria-hidden="true">
+            <span class="brand-cross"></span>
+          </div>
+          <h1 class="panel-title">
+            <span class="brand-pharma">Pharma</span><span class="brand-pilote">Pilote</span>
+          </h1>
+          <p class="panel-tagline">Système de gestion des pharmacies</p>
+          <div class="panel-divider" aria-hidden="true"></div>
+          <p class="panel-subtitle">
+            Pilotez avec la solution qui <strong>GERE</strong>
+          </p>
+        </header>
+
+        <div class="form-body">
+          <div class="field">
+            <label for="statut">
+              <span class="label-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </span>
+              Statut
+            </label>
+            <div class="select-wrap">
+              <select id="statut" name="statut" required>
+                <option value="" disabled selected>Sélectionner un statut</option>
+                <option value="pharmacien">Pharmacien</option>
+                <option value="preparateur">Préparateur</option>
+                <option value="assistant">Assistant</option>
+                <option value="admin">Administrateur</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="login">
+              <span class="label-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="M3 9h18" />
+                  <path d="M7 13h4" />
+                </svg>
+              </span>
+              Login
+            </label>
+            <input
+              type="text"
+              id="login"
+              name="login"
+              placeholder="Votre identifiant"
+              required
+              autocomplete="username"
+            />
+          </div>
+
+          <div class="field">
+            <label for="password">
+              <span class="label-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <rect x="4" y="11" width="16" height="10" rx="2" />
+                  <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+                </svg>
+              </span>
+              Mot de passe
+            </label>
+            <div class="password-wrap">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="••••••••"
+                required
+                autocomplete="current-password"
+              />
+              <button type="button" class="toggle-pwd" id="togglePwd" aria-label="Afficher le mot de passe">
+                <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-login">
+            <span>Se connecter</span>
+            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </button>
+        </div>
+
+        <p class="panel-secure">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M12 3l8 3v6c0 5-3.5 8.5-8 9.5C7.5 20.5 4 17 4 12V6l8-3z" />
+            <path d="M9 12l2 2 4-4" />
+          </svg>
+          Connexion sécurisée
+        </p>
+      </form>
+    </main>
+
+    <footer class="copyright">
+      <strong>2026-A2S.. Tous Droits Réservés</strong>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
