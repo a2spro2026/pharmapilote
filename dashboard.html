@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PharmaPilote — Tableau de bord</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <div class="app" id="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-mark" aria-hidden="true">
+          <span class="brand-cross"></span>
+        </div>
+        <div class="brand-text">
+          <span class="brand-pharma">Pharma</span><span class="brand-pilote">Pilote</span>
+          <small>Gestion pharmacie</small>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="Navigation principale">
+        <a href="#accueil" class="nav-item active" data-page="accueil">
+          <span class="nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11.5L12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-8.5z"/></svg>
+          </span>
+          <span class="nav-label">Tableau de Bord</span>
+          <span class="nav-chevron" aria-hidden="true"></span>
+        </a>
+
+        <div class="nav-group" id="navGroupAchats">
+          <button type="button" class="nav-item nav-parent" data-group="achats" aria-expanded="false">
+            <span class="nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l1 12H5L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/><path d="M9 12h6"/></svg>
+            </span>
+            <span class="nav-label">Gestion des Achats</span>
+            <span class="nav-chevron nav-chevron-toggle" aria-hidden="true"></span>
+          </button>
+          <div class="nav-submenu" id="submenuAchats" hidden>
+            <a href="#fiche-fournisseur" class="nav-subitem" data-page="fiche-fournisseur">
+              <span class="nav-subicon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
+              </span>
+              <span>Fiche Fournisseur</span>
+            </a>
+            <a href="#bon-commande" class="nav-subitem" data-page="bon-commande">
+              <span class="nav-subicon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>
+              </span>
+              <span>Bon de Commande</span>
+            </a>
+            <a href="#reglement-achat" class="nav-subitem" data-page="reglement-achat">
+              <span class="nav-subicon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M7 15h4"/></svg>
+              </span>
+              <span>Réglement D'achat</span>
+            </a>
+            <a href="#balance-fournisseurs" class="nav-subitem" data-page="balance-fournisseurs">
+              <span class="nav-subicon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M7 7l-3 8h6l-3-8zM17 7l-3 8h6l-3-8z"/></svg>
+              </span>
+              <span>Balance Fournisseurs</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-group" id="navGroupVentes">
+          <button type="button" class="nav-item nav-parent" data-group="ventes" aria-expanded="false">
+            <span class="nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V9M9 19V5M14 19v-7M19 19V8"/></svg>
+            </span>
+            <span class="nav-label">Gestion des Ventes</span>
+            <span class="nav-chevron nav-chevron-toggle" aria-hidden="true"></span>
+          </button>
+          <div class="nav-submenu" id="submenuVentes" hidden>
+            <a href="#vente-comptoir" class="nav-subitem" data-page="vente-comptoir">
+              <span class="nav-subicon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><path d="M7 10h4M13 10h4"/></svg>
+              </span>
+              <span>Vente Comptoire</span>
+            </a>
+            <a href="#retours-clients" class="nav-subitem" data-page="retours-clients">
+              <span class="nav-subicon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/><path d="M9 15l3-3 3 3"/></svg>
+              </span>
+              <span>Retours Clients</span>
+            </a>
+            <a href="#balances-ventes" class="nav-subitem" data-page="balances-ventes">
+              <span class="nav-subicon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V9M9 19V5M14 19v-7M19 19V8"/><path d="M3 19h18"/></svg>
+              </span>
+              <span>Balances des Ventes</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-group" id="navGroupStock">
+          <button type="button" class="nav-item nav-parent" data-group="stock" aria-expanded="false">
+            <span class="nav-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M12 12v4M10 14h4"/></svg>
+            </span>
+            <span class="nav-label">Gestion de Stock</span>
+            <span class="nav-chevron nav-chevron-toggle" aria-hidden="true"></span>
+          </button>
+          <div class="nav-submenu" id="submenuStock" hidden>
+            <a href="#fiche-produit" class="nav-subitem" data-page="fiche-produit">
+              <span class="nav-subicon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+              </span>
+              <span>Fiche Produit</span>
+            </a>
+            <a href="#balance-produits" class="nav-subitem" data-page="balance-produits">
+              <span class="nav-subicon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M7 7l-3 8h6l-3-8zM17 7l-3 8h6l-3-8z"/></svg>
+              </span>
+              <span>Balance Produits</span>
+            </a>
+            <a href="#mouvement-produits" class="nav-subitem" data-page="mouvement-produits">
+              <span class="nav-subicon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17l-4-4 4-4"/><path d="M3 13h13"/><path d="M17 7l4 4-4 4"/><path d="M21 11H8"/></svg>
+              </span>
+              <span>Mouvement Produits</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="#facturation" class="nav-item" data-page="facturation">
+          <span class="nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>
+          </span>
+          <span class="nav-label">Facturation et Comptabilité</span>
+          <span class="nav-chevron" aria-hidden="true"></span>
+        </a>
+        <a href="#rapports" class="nav-item" data-page="rapports">
+          <span class="nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M8 15h3"/></svg>
+          </span>
+          <span class="nav-label">Gestion des Charges</span>
+          <span class="nav-chevron" aria-hidden="true"></span>
+        </a>
+        <a href="#parametres" class="nav-item" data-page="parametres">
+          <span class="nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.3.6.9 1 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+          </span>
+          <span class="nav-label">Configuration Système</span>
+          <span class="nav-chevron" aria-hidden="true"></span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button type="button" class="btn-logout" id="btnLogout">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>
+          Déconnexion
+        </button>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="navbar">
+        <div class="navbar-left">
+          <button type="button" class="btn-menu" id="btnMenu" aria-label="Ouvrir le menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <div class="navbar-brand-line">
+            <h1 class="navbar-brand">
+              <span class="nb-pharma">Pharma</span><span class="nb-pilote">Pilote</span>
+            </h1>
+            <span class="navbar-brand-divider" aria-hidden="true"></span>
+            <p class="navbar-tagline">
+              La solution qui <strong>GERE</strong>
+            </p>
+          </div>
+        </div>
+        <div class="navbar-right">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
+            <input type="search" placeholder="Rechercher…" aria-label="Rechercher" />
+          </div>
+          <button type="button" class="btn-icon" aria-label="Notifications">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 16v-5a6 6 0 1 0-12 0v5l-2 2h16l-2-2z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+            <span class="badge">3</span>
+          </button>
+          <div class="user-chip">
+            <div class="user-avatar" id="userAvatar">B</div>
+            <div class="user-meta">
+              <strong id="userName">bilal</strong>
+              <span id="userRole">Administrateur</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="content" id="content">
+        <section class="page-view active" id="view-accueil" data-title="Tableau de Bord" data-subtitle="Vue d’ensemble de votre pharmacie">
+          <div class="dashboard-split">
+            <aside class="dashboard-left">
+          <div class="stats-grid">
+            <article class="kpi-card kpi-achats">
+              <div class="kpi-glow" aria-hidden="true"></div>
+              <div class="kpi-top">
+                <div class="kpi-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M6 7h12l1 12H5L6 7z"/>
+                    <path d="M9 7V5a3 3 0 0 1 6 0v2"/>
+                    <path d="M9 12h6"/>
+                  </svg>
+                </div>
+                <span class="kpi-badge">Achats</span>
+              </div>
+              <p class="kpi-label">Total Achats</p>
+              <p class="kpi-value">48 320 <span>€</span></p>
+              <p class="kpi-hint">Commandes fournisseurs</p>
+            </article>
+
+            <article class="kpi-card kpi-fournisseur">
+              <div class="kpi-glow" aria-hidden="true"></div>
+              <div class="kpi-top">
+                <div class="kpi-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M3 21h18"/>
+                    <path d="M5 21V8l7-4 7 4v13"/>
+                    <path d="M9 21v-6h6v6"/>
+                    <path d="M10 11h4"/>
+                  </svg>
+                </div>
+                <span class="kpi-badge">Fournisseurs</span>
+              </div>
+              <p class="kpi-label">Solde Fournisseur</p>
+              <p class="kpi-value">12 850 <span>€</span></p>
+              <p class="kpi-hint">À régler</p>
+            </article>
+
+            <article class="kpi-card kpi-ventes">
+              <div class="kpi-glow" aria-hidden="true"></div>
+              <div class="kpi-top">
+                <div class="kpi-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M12 3v3"/>
+                    <path d="M12 18v3"/>
+                    <circle cx="12" cy="12" r="7"/>
+                    <path d="M12 8v4l2.5 1.5"/>
+                    <path d="M9.5 5.5c-2 .9-3.5 2.9-3.5 5.2"/>
+                  </svg>
+                </div>
+                <span class="kpi-badge">Aujourd’hui</span>
+              </div>
+              <p class="kpi-label">Ventes Du Jour</p>
+              <p class="kpi-value">12 450 <span>€</span></p>
+              <p class="kpi-hint">86 tickets · Officine</p>
+            </article>
+
+            <article class="kpi-card kpi-clients">
+              <div class="kpi-glow" aria-hidden="true"></div>
+              <div class="kpi-top">
+                <div class="kpi-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M19 8v6M16 11h6"/>
+                  </svg>
+                </div>
+                <span class="kpi-badge">Clients</span>
+              </div>
+              <p class="kpi-label">Solde Clients</p>
+              <p class="kpi-value">3 280 <span>€</span></p>
+              <p class="kpi-hint">Créances patients</p>
+            </article>
+
+            <article class="kpi-card kpi-charges">
+              <div class="kpi-glow" aria-hidden="true"></div>
+              <div class="kpi-top">
+                <div class="kpi-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="3" y="5" width="18" height="14" rx="2"/>
+                    <path d="M3 10h18"/>
+                    <path d="M8 15h3"/>
+                  </svg>
+                </div>
+                <span class="kpi-badge">Charges</span>
+              </div>
+              <p class="kpi-label">Total Charges</p>
+              <p class="kpi-value">6 740 <span>€</span></p>
+              <p class="kpi-hint">Frais & dépenses</p>
+            </article>
+
+            <button type="button" class="kpi-card kpi-alerte kpi-card-btn" id="btnAlertStock" aria-controls="alertsPanel">
+              <div class="kpi-glow" aria-hidden="true"></div>
+              <div class="kpi-top">
+                <div class="kpi-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M10.3 4.3L2.6 18a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0z"/>
+                    <path d="M12 9v4M12 17h.01"/>
+                  </svg>
+                </div>
+                <span class="kpi-badge">Stock</span>
+              </div>
+              <p class="kpi-label">Alerte Stock</p>
+              <p class="kpi-value"><span id="alertStockCount">5</span> <span>produits</span></p>
+              <p class="kpi-hint"><span id="alertLowCount">3</span> faible · <span id="alertOutCount">2</span> rupture</p>
+            </button>
+          </div>
+
+            <section class="panel panel-bons">
+              <header class="panel-head">
+                <h2>5 Derniers Bon de Cmd</h2>
+              </header>
+              <div class="bons-table-wrap">
+                <table class="bons-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Date</th>
+                      <th scope="col">Réf</th>
+                      <th scope="col">Désignation</th>
+                      <th scope="col">Qte</th>
+                      <th scope="col">Montant</th>
+                      <th scope="col">Solde</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>04/08/2026</td>
+                      <td>BC-1028</td>
+                      <td>Paracétamol 1g · Lot A12</td>
+                      <td>120</td>
+                      <td>300,00 €</td>
+                      <td><span class="solde due">120,00 €</span></td>
+                    </tr>
+                    <tr>
+                      <td>03/08/2026</td>
+                      <td>BC-1027</td>
+                      <td>Amoxicilline 500mg</td>
+                      <td>80</td>
+                      <td>712,00 €</td>
+                      <td><span class="solde due">712,00 €</span></td>
+                    </tr>
+                    <tr>
+                      <td>02/08/2026</td>
+                      <td>BC-1026</td>
+                      <td>Vitamine D3 · Flacons</td>
+                      <td>45</td>
+                      <td>288,00 €</td>
+                      <td><span class="solde paid">0,00 €</span></td>
+                    </tr>
+                    <tr>
+                      <td>01/08/2026</td>
+                      <td>BC-1025</td>
+                      <td>Ibuprofène 400mg</td>
+                      <td>200</td>
+                      <td>640,00 €</td>
+                      <td><span class="solde due">200,00 €</span></td>
+                    </tr>
+                    <tr>
+                      <td>31/07/2026</td>
+                      <td>BC-1024</td>
+                      <td>Sirop Toux Adulte</td>
+                      <td>60</td>
+                      <td>348,00 €</td>
+                      <td><span class="solde paid">0,00 €</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="panel panel-alerts" id="alertsPanel" hidden>
+              <header class="panel-head">
+                <h2>Alertes stock</h2>
+                <button type="button" class="alerts-close" id="btnCloseAlerts" aria-label="Fermer">×</button>
+              </header>
+              <ul class="alert-list" id="alertList">
+                <li data-level="low"><strong>Amoxicilline 500mg</strong><span class="tag warn">8 restants</span></li>
+                <li data-level="low"><strong>Ibuprofène 400mg</strong><span class="tag warn">12 restants</span></li>
+                <li data-level="out"><strong>Vitamine D3</strong><span class="tag danger">Rupture</span></li>
+                <li data-level="low"><strong>Sirop Toux Adulte</strong><span class="tag warn">9 restants</span></li>
+                <li data-level="out"><strong>Aspirine 500mg</strong><span class="tag danger">Rupture</span></li>
+              </ul>
+            </section>
+            </aside>
+
+            <div class="dashboard-right">
+            <section class="panel panel-caisse" id="caissePanel">
+              <div class="caisse-fx" aria-hidden="true">
+                <span class="caisse-orb caisse-orb-a"></span>
+                <span class="caisse-orb caisse-orb-b"></span>
+                <span class="caisse-beam"></span>
+              </div>
+              <header class="caisse-header">
+                <div class="caisse-header-left">
+                  <div class="caisse-terminal-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                      <rect x="3" y="4" width="18" height="12" rx="2"/>
+                      <path d="M8 20h8M12 16v4"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h2>Terminal de caisse</h2>
+                    <p>Point de vente · Officine</p>
+                  </div>
+                </div>
+                <span class="caisse-status"><span class="status-dot"></span>Ouverte</span>
+              </header>
+
+              <div class="caisse-display" id="caisseDisplay">
+                <div class="caisse-display-scan" aria-hidden="true"></div>
+                <div class="caisse-display-meta">
+                  <span>Ticket en cours</span>
+                  <span id="ticketRef">#T-00482</span>
+                </div>
+                <div class="caisse-display-amount">
+                  <small>TOTAL</small>
+                  <strong id="caisseTotal">0,00 €</strong>
+                </div>
+              </div>
+
+              <div class="caisse-compose">
+                <p class="caisse-section-label">Saisie produit</p>
+                <div class="caisse-search-wrap">
+                  <div class="caisse-search">
+                    <span class="caisse-search-badge" aria-hidden="true">
+                      <svg class="caisse-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/>
+                        <path d="M7 8v8M10 8v8M13 8v5M16 8v8"/>
+                      </svg>
+                    </span>
+                    <div class="caisse-search-field">
+                      <label class="caisse-search-label" for="productSearch">Recherche</label>
+                      <input
+                        type="search"
+                        id="productSearch"
+                        list="productList"
+                        placeholder="Nom produit ou code-barres…"
+                        autocomplete="off"
+                        inputmode="search"
+                      />
+                    </div>
+                    <kbd class="caisse-search-kbd" title="Appuyez sur Entrée">↵</kbd>
+                    <datalist id="productList">
+                      <option value="Paracétamol 1g" label="3400930000001"></option>
+                      <option value="Ibuprofène 400mg" label="3400930000002"></option>
+                      <option value="Amoxicilline 500mg" label="3400930000003"></option>
+                      <option value="Vitamine D3" label="3400930000004"></option>
+                      <option value="Aspirine 500mg" label="3400930000005"></option>
+                      <option value="Sirop Toux Adulte" label="3400930000006"></option>
+                      <option value="3400930000001" label="Paracétamol 1g"></option>
+                      <option value="3400930000002" label="Ibuprofène 400mg"></option>
+                      <option value="3400930000003" label="Amoxicilline 500mg"></option>
+                      <option value="3400930000004" label="Vitamine D3"></option>
+                      <option value="3400930000005" label="Aspirine 500mg"></option>
+                      <option value="3400930000006" label="Sirop Toux Adulte"></option>
+                    </datalist>
+                  </div>
+                  <p class="caisse-barcode-hint" id="barcodeHint">Scannez ou saisissez un code-barres · Entrée pour valider</p>
+                </div>
+
+                <div class="caisse-amount-row">
+                  <div class="amount-field">
+                    <label for="productAmount">Montant</label>
+                    <div class="amount-input-wrap">
+                      <input type="number" id="productAmount" min="0" step="0.01" placeholder="0.00" />
+                      <span class="currency">€</span>
+                    </div>
+                  </div>
+                  <button type="button" class="caisse-btn caisse-btn-add" id="btnAddProduct">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                    Ajouter
+                  </button>
+                </div>
+              </div>
+
+              <div class="caisse-ticket">
+                <div class="caisse-ticket-head">
+                  <span>Lignes du ticket</span>
+                  <span id="cartCount">0 article</span>
+                </div>
+                <ul class="caisse-cart" id="caisseCart"></ul>
+              </div>
+            </section>
+
+            <div class="caisse-footer-actions">
+              <div class="caisse-actions">
+                <button type="button" class="caisse-btn caisse-btn-preview" id="btnPreviewOrder" disabled title="Visualiser la commande">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                  Visualiser
+                </button>
+                <button type="button" class="caisse-btn caisse-btn-validate" id="btnValidateOrder" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                  Valider la commande
+                </button>
+              </div>
+            </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page-view" id="view-fiche-fournisseur" data-title="Fiche Fournisseur" data-subtitle="Gestion des fiches fournisseurs">
+          <div class="panel">
+            <header class="panel-head"><h2>Fiche Fournisseur</h2></header>
+            <p class="empty-hint">Module fiche fournisseur — prêt à être connecté aux données.</p>
+          </div>
+        </section>
+        <section class="page-view" id="view-bon-commande" data-title="Bon de Commande" data-subtitle="Création et suivi des bons de commande">
+          <div class="panel">
+            <header class="panel-head"><h2>Bon de Commande</h2></header>
+            <p class="empty-hint">Module bon de commande — prêt à être connecté aux données.</p>
+          </div>
+        </section>
+        <section class="page-view" id="view-reglement-achat" data-title="Réglement D'achat" data-subtitle="Paiements et règlements fournisseurs">
+          <div class="panel">
+            <header class="panel-head"><h2>Réglement D'achat</h2></header>
+            <p class="empty-hint">Module réglement d'achat — prêt à être connecté aux données.</p>
+          </div>
+        </section>
+        <section class="page-view" id="view-balance-fournisseurs" data-title="Balance Fournisseurs" data-subtitle="Soldes et balance fournisseurs">
+          <div class="panel">
+            <header class="panel-head"><h2>Balance Fournisseurs</h2></header>
+            <p class="empty-hint">Module balance fournisseurs — prêt à être connecté aux données.</p>
+          </div>
+        </section>
+        <section class="page-view" id="view-vente-comptoir" data-title="Vente Comptoire" data-subtitle="Ventes au comptoir de l’officine">
+          <div class="panel">
+            <header class="panel-head"><h2>Vente Comptoire</h2></header>
+            <p class="empty-hint">Module vente comptoire — prêt à être connecté aux données.</p>
+          </div>
+        </section>
+        <section class="page-view" id="view-retours-clients" data-title="Retours Clients" data-subtitle="Gestion des retours et avoirs">
+          <div class="panel">
+            <header class="panel-head"><h2>Retours Clients</h2></header>
+            <p class="empty-hint">Module retours clients — prêt à être connecté aux données.</p>
+          </div>
+        </section>
+        <section class="page-view" id="view-balances-ventes" data-title="Balances des Ventes" data-subtitle="Soldes et bilans des ventes">
+          <div class="panel">
+            <header class="panel-head"><h2>Balances des Ventes</h2></header>
+            <p class="empty-hint">Module balances des ventes — prêt à être connecté aux données.</p>
+          </div>
+        </section>
+        <section class="page-view" id="view-fiche-produit" data-title="Fiche Produit" data-subtitle="Fiches et références produits">
+          <div class="panel">
+            <header class="panel-head"><h2>Fiche Produit</h2></header>
+            <p class="empty-hint">Module fiche produit — prêt à être connecté aux données.</p>
+          </div>
+        </section>
+        <section class="page-view" id="view-balance-produits" data-title="Balance Produits" data-subtitle="Soldes et état des stocks">
+          <div class="panel">
+            <header class="panel-head"><h2>Balance Produits</h2></header>
+            <p class="empty-hint">Module balance produits — prêt à être connecté aux données.</p>
+          </div>
+        </section>
+        <section class="page-view" id="view-mouvement-produits" data-title="Mouvement Produits" data-subtitle="Entrées, sorties et transferts">
+          <div class="panel">
+            <header class="panel-head"><h2>Mouvement Produits</h2></header>
+            <p class="empty-hint">Module mouvement produits — prêt à être connecté aux données.</p>
+          </div>
+        </section>
+        <section class="page-view" id="view-facturation" data-title="Facturation et Comptabilité" data-subtitle="Factures, écritures et soldes">
+          <div class="panel">
+            <header class="panel-head"><h2>Facturation et Comptabilité</h2></header>
+            <p class="empty-hint">Module facturation et comptabilité — prêt à être connecté aux données.</p>
+          </div>
+        </section>
+        <section class="page-view" id="view-rapports" data-title="Gestion des Charges" data-subtitle="Dépenses et frais d’exploitation">
+          <div class="panel">
+            <header class="panel-head"><h2>Gestion des Charges</h2></header>
+            <p class="empty-hint">Module charges — prêt à être connecté aux données.</p>
+          </div>
+        </section>
+        <section class="page-view" id="view-parametres" data-title="Configuration Système" data-subtitle="Paramètres de l’application">
+          <div class="panel">
+            <header class="panel-head"><h2>Configuration Système</h2></header>
+            <p class="empty-hint">Module configuration — prêt à être connecté aux données.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
+
+  <div class="pay-modal" id="caissePay" hidden>
+    <div class="pay-modal-backdrop" id="payModalBackdrop"></div>
+    <div class="pay-panel" role="dialog" aria-modal="true" aria-labelledby="payPanelTitle">
+      <header class="pay-panel-header">
+        <div>
+          <h2 id="payPanelTitle">Mode de paiement</h2>
+          <p>Total à régler : <strong id="payPanelTotal">0,00 €</strong></p>
+        </div>
+        <button type="button" class="pay-panel-close" id="btnClosePay" aria-label="Fermer">×</button>
+      </header>
+      <div class="pay-types">
+        <button type="button" class="pay-type" data-pay="especes">
+          <span class="pay-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
+          </span>
+          <span class="pay-name">Espèces</span>
+        </button>
+        <button type="button" class="pay-type" data-pay="carte">
+          <span class="pay-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          </span>
+          <span class="pay-name">Carte</span>
+        </button>
+        <button type="button" class="pay-type" data-pay="cheque">
+          <span class="pay-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z"/><path d="M7 12h6M7 15h4"/></svg>
+          </span>
+          <span class="pay-name">Chèque</span>
+        </button>
+        <button type="button" class="pay-type" data-pay="tiers">
+          <span class="pay-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 9.5C7.5 20.5 4 17 4 12V6l8-3z"/></svg>
+          </span>
+          <span class="pay-name">Tiers payant</span>
+        </button>
+        <button type="button" class="pay-type" data-pay="mobile">
+          <span class="pay-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
+          </span>
+          <span class="pay-name">Mobile</span>
+        </button>
+      </div>
+      <button type="button" class="caisse-btn caisse-btn-pay" id="btnConfirmPay" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Confirmer le paiement
+      </button>
+    </div>
+  </div>
+
+  <div class="order-modal" id="orderModal" hidden>
+    <div class="order-modal-backdrop" id="orderModalBackdrop"></div>
+    <div class="order-sheet" role="dialog" aria-modal="true" aria-labelledby="orderSheetTitle">
+      <div class="order-sheet-paper">
+        <header class="order-sheet-header">
+          <div class="order-logo" aria-hidden="true">
+            <span class="brand-cross"></span>
+          </div>
+          <div class="order-sheet-titles">
+            <h2 id="orderSheetTitle">
+              <span class="brand-pharma">Pharma</span><span class="brand-pilote">Pilote</span>
+            </h2>
+            <p class="order-pharmacy-name">Pharmacie Santé &amp; Conseil</p>
+            <p class="order-pharmacy-meta">12 Avenue de la République · 75011 Paris</p>
+            <p class="order-pharmacy-meta">Tél. 01 42 00 00 00 · SIRET 123 456 789 00012</p>
+          </div>
+        </header>
+
+        <div class="order-sheet-meta">
+          <div>
+            <span>Document</span>
+            <strong>Bon de commande / Ticket</strong>
+          </div>
+          <div>
+            <span>Référence</span>
+            <strong id="previewTicketRef">#T-00482</strong>
+          </div>
+          <div>
+            <span>Date</span>
+            <strong id="previewDate">—</strong>
+          </div>
+        </div>
+
+        <table class="order-table">
+          <thead>
+            <tr>
+              <th scope="col">N°</th>
+              <th scope="col">Désignation</th>
+              <th scope="col">Qté</th>
+              <th scope="col">Montant</th>
+            </tr>
+          </thead>
+          <tbody id="previewTableBody"></tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3">Total TTC</td>
+              <td id="previewTotal">0,00 €</td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <footer class="order-sheet-footer">
+          <p>Merci de votre confiance · Pilotez. Gérez. Développez.</p>
+          <p>Document généré par PharmaPilote · 2026-A2S.. Tous Droits Réservés</p>
+        </footer>
+      </div>
+
+      <div class="order-sheet-actions">
+        <button type="button" class="caisse-btn caisse-btn-back" id="btnPreviewBack">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          Retour
+        </button>
+        <button type="button" class="caisse-btn caisse-btn-validate" id="btnPreviewValidate">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          Valider
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

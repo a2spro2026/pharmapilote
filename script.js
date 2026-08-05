@@ -18,6 +18,10 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     return;
   }
 
-  // Placeholder — brancher l'auth réelle ici
-  alert("Connexion en cours pour « " + login + " » (" + statut + ")");
+  sessionStorage.setItem(
+    "pharmapilote_user",
+    JSON.stringify({ statut: statut, login: login })
+  );
+
+  window.location.href = "dashboard.html";
 });

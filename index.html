@@ -41,11 +41,11 @@
             </label>
             <div class="select-wrap">
               <select id="statut" name="statut" required>
-                <option value="" disabled selected>Sélectionner un statut</option>
+                <option value="" disabled>Sélectionner un statut</option>
                 <option value="pharmacien">Pharmacien</option>
                 <option value="preparateur">Préparateur</option>
                 <option value="assistant">Assistant</option>
-                <option value="admin">Administrateur</option>
+                <option value="admin" selected>Administrateur</option>
               </select>
             </div>
           </div>
@@ -65,6 +65,7 @@
               type="text"
               id="login"
               name="login"
+              value="bilal"
               placeholder="Votre identifiant"
               required
               autocomplete="username"
@@ -86,6 +87,7 @@
                 type="password"
                 id="password"
                 name="password"
+                value="password"
                 placeholder="••••••••"
                 required
                 autocomplete="current-password"
