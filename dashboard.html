@@ -184,10 +184,10 @@
             <span class="badge">3</span>
           </button>
           <div class="user-chip">
-            <div class="user-avatar" id="userAvatar">B</div>
+            <div class="user-avatar" id="userAvatar">U</div>
             <div class="user-meta">
-              <strong id="userName">bilal</strong>
-              <span id="userRole">Administrateur</span>
+              <strong id="userName">Utilisateur</strong>
+              <span id="userRole">—</span>
             </div>
           </div>
         </div>
@@ -211,7 +211,7 @@
                 <span class="kpi-badge">Achats</span>
               </div>
               <p class="kpi-label">Total Achats</p>
-              <p class="kpi-value">48 320 <span>€</span></p>
+              <p class="kpi-value">0.00</p>
               <p class="kpi-hint">Commandes fournisseurs</p>
             </article>
 
@@ -229,7 +229,7 @@
                 <span class="kpi-badge">Fournisseurs</span>
               </div>
               <p class="kpi-label">Solde Fournisseur</p>
-              <p class="kpi-value">12 850 <span>€</span></p>
+              <p class="kpi-value">0.00</p>
               <p class="kpi-hint">À régler</p>
             </article>
 
@@ -248,8 +248,8 @@
                 <span class="kpi-badge">Aujourd’hui</span>
               </div>
               <p class="kpi-label">Ventes Du Jour</p>
-              <p class="kpi-value">12 450 <span>€</span></p>
-              <p class="kpi-hint">86 tickets · Officine</p>
+              <p class="kpi-value">0.00</p>
+              <p class="kpi-hint">0 ticket · Officine</p>
             </article>
 
             <article class="kpi-card kpi-clients">
@@ -265,7 +265,7 @@
                 <span class="kpi-badge">Clients</span>
               </div>
               <p class="kpi-label">Solde Clients</p>
-              <p class="kpi-value">3 280 <span>€</span></p>
+              <p class="kpi-value">0.00</p>
               <p class="kpi-hint">Créances patients</p>
             </article>
 
@@ -282,7 +282,7 @@
                 <span class="kpi-badge">Charges</span>
               </div>
               <p class="kpi-label">Total Charges</p>
-              <p class="kpi-value">6 740 <span>€</span></p>
+              <p class="kpi-value">0.00</p>
               <p class="kpi-hint">Frais & dépenses</p>
             </article>
 
@@ -298,8 +298,8 @@
                 <span class="kpi-badge">Stock</span>
               </div>
               <p class="kpi-label">Alerte Stock</p>
-              <p class="kpi-value"><span id="alertStockCount">5</span> <span>produits</span></p>
-              <p class="kpi-hint"><span id="alertLowCount">3</span> faible · <span id="alertOutCount">2</span> rupture</p>
+              <p class="kpi-value"><span id="alertStockCount">0</span> <span>produits</span></p>
+              <p class="kpi-hint"><span id="alertLowCount">0</span> faible · <span id="alertOutCount">0</span> rupture</p>
             </button>
           </div>
 
@@ -320,45 +320,8 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>04/08/2026</td>
-                      <td>BC-1028</td>
-                      <td>Paracétamol 1g · Lot A12</td>
-                      <td>120</td>
-                      <td>300,00 €</td>
-                      <td><span class="solde due">120,00 €</span></td>
-                    </tr>
-                    <tr>
-                      <td>03/08/2026</td>
-                      <td>BC-1027</td>
-                      <td>Amoxicilline 500mg</td>
-                      <td>80</td>
-                      <td>712,00 €</td>
-                      <td><span class="solde due">712,00 €</span></td>
-                    </tr>
-                    <tr>
-                      <td>02/08/2026</td>
-                      <td>BC-1026</td>
-                      <td>Vitamine D3 · Flacons</td>
-                      <td>45</td>
-                      <td>288,00 €</td>
-                      <td><span class="solde paid">0,00 €</span></td>
-                    </tr>
-                    <tr>
-                      <td>01/08/2026</td>
-                      <td>BC-1025</td>
-                      <td>Ibuprofène 400mg</td>
-                      <td>200</td>
-                      <td>640,00 €</td>
-                      <td><span class="solde due">200,00 €</span></td>
-                    </tr>
-                    <tr>
-                      <td>31/07/2026</td>
-                      <td>BC-1024</td>
-                      <td>Sirop Toux Adulte</td>
-                      <td>60</td>
-                      <td>348,00 €</td>
-                      <td><span class="solde paid">0,00 €</span></td>
+                    <tr class="bons-empty">
+                      <td colspan="6">Aucun bon de commande</td>
                     </tr>
                   </tbody>
                 </table>
@@ -371,11 +334,7 @@
                 <button type="button" class="alerts-close" id="btnCloseAlerts" aria-label="Fermer">×</button>
               </header>
               <ul class="alert-list" id="alertList">
-                <li data-level="low"><strong>Amoxicilline 500mg</strong><span class="tag warn">8 restants</span></li>
-                <li data-level="low"><strong>Ibuprofène 400mg</strong><span class="tag warn">12 restants</span></li>
-                <li data-level="out"><strong>Vitamine D3</strong><span class="tag danger">Rupture</span></li>
-                <li data-level="low"><strong>Sirop Toux Adulte</strong><span class="tag warn">9 restants</span></li>
-                <li data-level="out"><strong>Aspirine 500mg</strong><span class="tag danger">Rupture</span></li>
+                <li class="alert-empty">Aucune alerte stock</li>
               </ul>
             </section>
             </aside>
@@ -411,7 +370,7 @@
                 </div>
                 <div class="caisse-display-amount">
                   <small>TOTAL</small>
-                  <strong id="caisseTotal">0,00 €</strong>
+                  <strong id="caisseTotal">0.00</strong>
                 </div>
               </div>
 
@@ -460,7 +419,6 @@
                     <label for="productAmount">Montant</label>
                     <div class="amount-input-wrap">
                       <input type="number" id="productAmount" min="0" step="0.01" placeholder="0.00" />
-                      <span class="currency">€</span>
                     </div>
                   </div>
                   <button type="button" class="caisse-btn caisse-btn-add" id="btnAddProduct">
@@ -588,10 +546,23 @@
       <header class="pay-panel-header">
         <div>
           <h2 id="payPanelTitle">Mode de paiement</h2>
-          <p>Total à régler : <strong id="payPanelTotal">0,00 €</strong></p>
+          <p>Total à régler : <strong id="payPanelTotal">0.00</strong></p>
         </div>
         <button type="button" class="pay-panel-close" id="btnClosePay" aria-label="Fermer">×</button>
       </header>
+      <div class="pay-patient">
+        <p class="pay-patient-label">Patient <span>(facultatif)</span></p>
+        <div class="pay-patient-fields">
+          <div class="pay-field">
+            <label for="patientName">Nom Complet</label>
+            <input type="text" id="patientName" name="patientName" placeholder="Nom et prénom du patient" autocomplete="name" />
+          </div>
+          <div class="pay-field">
+            <label for="patientCin">CIN</label>
+            <input type="text" id="patientCin" name="patientCin" placeholder="N° CIN" autocomplete="off" />
+          </div>
+        </div>
+      </div>
       <div class="pay-types">
         <button type="button" class="pay-type" data-pay="especes">
           <span class="pay-icon" aria-hidden="true">
@@ -677,7 +648,7 @@
           <tfoot>
             <tr>
               <td colspan="3">Total TTC</td>
-              <td id="previewTotal">0,00 €</td>
+              <td id="previewTotal">0.00</td>
             </tr>
           </tfoot>
         </table>

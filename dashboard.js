@@ -131,7 +131,7 @@
   const btnCloseAlerts = document.getElementById("btnCloseAlerts");
 
   function refreshAlertCounts() {
-    const items = document.querySelectorAll("#alertList li");
+    const items = document.querySelectorAll("#alertList li[data-level]");
     const low = document.querySelectorAll('#alertList li[data-level="low"]').length;
     const out = document.querySelectorAll('#alertList li[data-level="out"]').length;
     const total = items.length;
@@ -181,6 +181,8 @@
   const caisseTotal = document.getElementById("caisseTotal");
   const caissePay = document.getElementById("caissePay");
   const payPanelTotal = document.getElementById("payPanelTotal");
+  const patientName = document.getElementById("patientName");
+  const patientCin = document.getElementById("patientCin");
   const btnClosePay = document.getElementById("btnClosePay");
   const payModalBackdrop = document.getElementById("payModalBackdrop");
   const btnAddProduct = document.getElementById("btnAddProduct");
@@ -201,8 +203,8 @@
   let orderValidated = false;
   let resolvedProduct = null;
 
-  function formatEuro(n) {
-    return n.toFixed(2).replace(".", ",") + " €";
+  function formatAmount(n) {
+    return Number(n).toFixed(2);
   }
 
   function findProduct(query) {
@@ -293,14 +295,14 @@
       tr.children[1].textContent = item.barcode
         ? item.name + " (" + item.barcode + ")"
         : item.name;
-      tr.children[3].textContent = formatEuro(item.price);
+      tr.children[3].textContent = formatAmount(item.price);
       previewTableBody.appendChild(tr);
     });
 
     const total = cart.reduce(function (sum, item) {
       return sum + item.price;
     }, 0);
-    previewTotal.textContent = formatEuro(total);
+    previewTotal.textContent = formatAmount(total);
     previewTicketRef.textContent = ticketRef ? ticketRef.textContent : "#T-00482";
 
     const now = new Date();
@@ -321,11 +323,17 @@
     document.body.style.overflow = "";
   }
 
+  function resetPatientFields() {
+    if (patientName) patientName.value = "";
+    if (patientCin) patientCin.value = "";
+  }
+
   function closePayPanel() {
     orderValidated = false;
     caissePay.hidden = true;
     selectedPay = null;
     btnConfirmPay.disabled = true;
+    resetPatientFields();
     document.querySelectorAll(".pay-type").forEach(function (btn) {
       btn.classList.remove("selected");
     });
@@ -339,22 +347,24 @@
       return sum + item.price;
     }, 0);
     if (payPanelTotal) {
-      payPanelTotal.textContent = formatEuro(total);
+      payPanelTotal.textContent = formatAmount(total);
     }
     selectedPay = null;
     btnConfirmPay.disabled = true;
+    resetPatientFields();
     document.querySelectorAll(".pay-type").forEach(function (btn) {
       btn.classList.remove("selected");
     });
     caissePay.hidden = false;
     document.body.style.overflow = "hidden";
+    if (patientName) patientName.focus();
   }
 
   function updateTotal() {
     const total = cart.reduce(function (sum, item) {
       return sum + item.price;
     }, 0);
-    caisseTotal.textContent = formatEuro(total);
+    caisseTotal.textContent = formatAmount(total);
     const display = document.getElementById("caisseDisplay");
     if (display) {
       display.classList.remove("flash");
@@ -393,7 +403,7 @@
       } else {
         barcodeEl.remove();
       }
-      li.querySelector(".cart-price").textContent = formatEuro(item.price);
+      li.querySelector(".cart-price").textContent = formatAmount(item.price);
       li.querySelector(".cart-remove").addEventListener("click", function () {
         cart.splice(index, 1);
         closePayPanel();
@@ -510,12 +520,16 @@
     const total = cart.reduce(function (sum, item) {
       return sum + item.price;
     }, 0);
-    alert(
+    const name = patientName ? patientName.value.trim() : "";
+    const cin = patientCin ? patientCin.value.trim() : "";
+    let message =
       "Paiement confirmé\nTotal : " +
-        formatEuro(total) +
-        "\nMode : " +
-        (labels[selectedPay] || selectedPay)
-    );
+      formatAmount(total) +
+      "\nMode : " +
+      (labels[selectedPay] || selectedPay);
+    if (name) message += "\nPatient : " + name;
+    if (cin) message += "\nCIN : " + cin;
+    alert(message);
     cart = [];
     closePayPanel();
     renderCart();

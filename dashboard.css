@@ -837,6 +837,69 @@ button {
   color: #c03030;
 }
 
+.pay-patient {
+  margin-bottom: 1rem;
+  padding: 0.85rem 0.9rem;
+  border-radius: 14px;
+  background: rgba(0, 209, 193, 0.06);
+  border: 1px solid rgba(0, 209, 193, 0.16);
+}
+
+.pay-patient-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 0.65rem;
+}
+
+.pay-patient-label span {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--muted);
+  opacity: 0.9;
+}
+
+.pay-patient-fields {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.pay-field label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+
+.pay-field input {
+  width: 100%;
+  height: 42px;
+  padding: 0 0.85rem;
+  border: 1.5px solid rgba(0, 209, 193, 0.2);
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--navy);
+  background: rgba(255, 255, 255, 0.95);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pay-field input::placeholder {
+  color: rgba(10, 61, 74, 0.35);
+  font-weight: 400;
+}
+
+.pay-field input:focus {
+  border-color: #00e0d0;
+  box-shadow: 0 0 0 3px rgba(0, 209, 193, 0.16);
+}
+
 .pay-panel .pay-types {
   margin-bottom: 0.9rem;
 }
@@ -1248,6 +1311,19 @@ button {
   border-bottom: none;
 }
 
+.bons-table tbody tr.bons-empty td {
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.88rem;
+  color: var(--muted);
+  padding: 1.5rem 1rem;
+  letter-spacing: 0.01em;
+}
+
+.bons-table tbody tr.bons-empty:hover {
+  background: transparent;
+}
+
 .solde {
   display: inline-block;
   padding: 0.18rem 0.45rem;
@@ -1317,6 +1393,15 @@ button {
 }
 
 .alert-list li:last-child {
+  border-bottom: none;
+}
+
+.alert-list li.alert-empty {
+  justify-content: center;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 1.1rem 0.5rem;
   border-bottom: none;
 }
 
@@ -2031,7 +2116,7 @@ button {
 .amount-input-wrap input {
   width: 100%;
   height: 48px;
-  padding: 0 2.2rem 0 0.9rem;
+  padding: 0 0.9rem;
   border: 1.5px solid rgba(0, 209, 193, 0.18);
   border-radius: 14px;
   font-family: inherit;
@@ -2050,15 +2135,6 @@ button {
   box-shadow:
     0 0 0 3px rgba(0, 209, 193, 0.18),
     0 0 20px rgba(0, 209, 193, 0.22);
-}
-
-.amount-input-wrap .currency {
-  position: absolute;
-  right: 0.85rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--muted);
-  pointer-events: none;
 }
 
 .caisse-btn {

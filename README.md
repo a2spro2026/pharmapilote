@@ -6,7 +6,7 @@ Solution de gestion d’officine — connexion, tableau de bord, caisse et modul
 
 **https://a2spro2026.github.io/pharmapilote/**
 
-Identifiants de démo : `bilal` / `password` (statut Administrateur).
+Saisir un statut, un login et un mot de passe pour accéder au dashboard.
 
 ## Lancer en local
 
