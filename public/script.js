@@ -23,5 +23,5 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     JSON.stringify({ statut: statut, login: login })
   );
 
-  window.location.href = "dashboard.html";
+  window.location.href = "/dashboard";
 });

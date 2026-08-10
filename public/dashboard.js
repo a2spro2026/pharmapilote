@@ -1,7 +1,7 @@
 (function () {
   const session = sessionStorage.getItem("pharmapilote_user");
   if (!session) {
-    window.location.replace("index.html");
+    window.location.replace("/");
     return;
   }
 
@@ -9,7 +9,7 @@
   try {
     user = JSON.parse(session);
   } catch {
-    window.location.replace("index.html");
+    window.location.replace("/");
     return;
   }
 
@@ -122,7 +122,7 @@
 
   document.getElementById("btnLogout").addEventListener("click", function () {
     sessionStorage.removeItem("pharmapilote_user");
-    window.location.replace("index.html");
+    window.location.replace("/");
   });
 
   /* ——— Alerte Stock ——— */
